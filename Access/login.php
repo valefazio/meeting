@@ -85,7 +85,7 @@
 				updateDb("remember_token_created_at", "CURRENT_TIMESTAMP", "email = '$email'");
 			}
 			
-			header("Location: ../Pages/index.php");
+			header("Location: ../index.php");
 			exit;
 
 		} else {

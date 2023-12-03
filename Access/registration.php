@@ -84,7 +84,7 @@
 			insertDb("username, email, password", "'$username', '$email', '$psw'");
 			
 			$_SESSION['logged'] = $email;
-			header("Location: ../Pages/index.php");
+			header("Location: ../index.php");
 		}
 	?>
 </body>

@@ -5,7 +5,7 @@
 </head>
 <body>
     <?php
-		include("../Management/navbar.php");
+		include("Management/navbar.php");
 	?>
   </body>
 </html>

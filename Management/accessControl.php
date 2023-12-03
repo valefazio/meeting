@@ -19,12 +19,10 @@
 			$logged = 1;
 		} else {	//utente non ancora loggato
 			$logged = 0;
-			echo "<script>console.log('Redirecting to login.php');</script>";
 		}
-		echo "<script>console.log('$logged');</script>";
         
 		if($logged == 0){
-//			header("Location: ../Access/login.php");
+			header("Location: ../Access/login.php");
 			exit();
 		}
     }
