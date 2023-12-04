@@ -17,7 +17,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
-    <link rel="stylesheet" type="text/css" href="../Management/style.css">
+    <link rel="stylesheet" type="text/css" href="Management/style.css">
     <style>
         html {
             box-sizing: border-box;
@@ -165,7 +165,7 @@
 					menu
 				</span>
           		<ul id="column">
-					<li class="sub-item clickable"  onclick="removeColumnBar(); window.location.href='../Access/logout.php'" id="login">
+					<li class="sub-item clickable"  onclick="removeColumnBar(); window.location.href='Access/logout.php'" id="login">
 						<span class="material-icons-outlined"> logout </span>
 						<p>Logout</p>
 					</li>

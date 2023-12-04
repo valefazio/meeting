@@ -5,6 +5,7 @@
     --main-color: linear-gradient(to right, var(--colorA), var(--colorB));
     --text-color: #333;
     --navbar-color: #fff;
+    --prove: #f2f6f7;
 }
 
 body {
@@ -62,9 +63,9 @@ h1 {
     text-align: left;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"] {
+input[type='text'],
+input[type='password'],
+input[type='email'] {
     width: 80%;
     padding: 10px;
     margin: 5px 0 0 0;
@@ -73,7 +74,7 @@ input[type="email"] {
     font-size: 16px;
 }
 
-input[type="submit"] {
+input[type='submit'] {
     background-color: #3498db;
     color: #fff;
     padding: 10px 20px;
@@ -86,10 +87,10 @@ input[type="submit"] {
     display: flex;
 }
 
-input[type="submit"]:hover {
+input[type='submit']:hover {
     background-color: #258cd1;
 }
 
-input[type="submit"]:disabled {
+input[type='submit']:disabled {
     background-color: grey;
 }
