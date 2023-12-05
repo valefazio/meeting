@@ -5,7 +5,7 @@
 </head>
 <body>
     <?php
-		header("Location: Pages/home.php")
+		include("../Management/navbar.php");
 	?>
   </body>
 </html>

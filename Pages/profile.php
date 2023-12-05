@@ -1,25 +1,13 @@
-<?php
-session_start();
-if (!isset($_SESSION['logged'])) {
-    // Redirect to the login page if not logged in
-    header("Location: ../Access/login.php");
-    exit();
-}
-
-// Get the user's profile information from the database
-include "../Management/connection.php";
-$profileData = getUserProfileData($_SESSION['logged']);
-
-// Display the profile information
-?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Profile Page</title>
+    <link rel="stylesheet" type="text/css" href="../Management//Style/style.css">
 </head>
 <body>
     <?php
 		include("../Management/navbar.php");
+        $profileData = getUserProfileData($_SESSION['logged']);
         // Note: Removed redundant assignment to $profileData
         if ($profileData) {
             foreach ($profileData as $profile) {

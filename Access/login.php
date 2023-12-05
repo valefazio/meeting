@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="../Management/style.css">
+    <link rel="stylesheet" type="text/css" href="../Management/Style/accessStyle.css">
 </head>
 <body id="form-sfondo">
     <div id="form">
         <form action="" method="POST">
-			<div id="form-dati">
-        		<h1>Login</h1>
-				<label for="email">Email:</label>
-				<input type="email" id="email" name="email" required><br><br>
-
-				<label for="pass">Password:</label>
-				<input type="password" id="pass" name="pass" required><br><br>
-
-				<input type="checkbox" id="remember-me" name="remember-me">
-				<label for="remember-me" id="remember-me-text"> Remember me</label><br><br>
-			</div>
-           	<input type="submit" value="Login" id="login-button" disabled>
+			<table>
+				<tr>
+					<td colspan="2" style="height: fit-content"><h1>Login</h1></td>
+				</tr>
+				<tr>
+					<td><label for="email">Email:</label></td>
+					<td><input type="email" id="email" name="email" required></td>
+				</tr>
+				<tr>
+					<td><label for="pass">Password:</label></td>
+					<td><input type="password" id="pass" name="pass" required></td>
+				</tr>
+				<tr>
+					<td><p></p></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="Entra" id="login-button" disabled></td>
+				</tr>
+			</table>
         </form>
     </div>
 </body>
@@ -47,13 +54,16 @@
 
 	<?php
 		//SESSIONE
-		if(!session_start()) exit("Troubles starting session.");
+		include("../Management/accessControl.php");
+		if(isLogged()) {
+			header("Location: ../Pages/home.php");
+			exit;
+		}
 		
 		if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_POST['pass'])) {	//ha inserito i dati
 			$email = htmlspecialchars($_POST['email']);
 			$password = $_POST['pass'];
 
-			include "../Management/connection.php";
 			$res = selectDb("email, password", "email = '$email'");
 			if ($res->num_rows == 0) {
 				echo "<script>alert('Email or password are not correct')</script>";
@@ -85,7 +95,7 @@
 				updateDb("remember_token_created_at", "CURRENT_TIMESTAMP", "email = '$email'");
 			}
 			
-			header("Location: ../index.php");
+			header("Location: ../Pages/home.php");
 			exit;
 
 		} else {

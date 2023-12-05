@@ -36,6 +36,19 @@
         mysqli_close($conn);
         return $res;
 	}
+
+    function selectDbColumns($columns) {
+		global $table;
+		$conn = accessDb();
+		$sql = "SELECT $columns FROM $table";
+		$res = $conn->query($sql);
+        if(!$res) {
+            mysqli_close($conn);
+            die("Unable to execute query: table '$table' not found.");
+        }
+        mysqli_close($conn);
+        return $res;
+	}
 	
 
     function updateDb($columns, $values, $where) {
@@ -51,8 +64,10 @@
     }
 
     function getUserProfileData($email) {
-		$profileData = selectDb("username, email", "email = '$email'");
-		return $profileData;
+		return selectDb("username, email", "email = '$email'");
+	}
+    function getUsers($email) {
+		return selectDbColumns("username, email, admin");
 	}
 	
 ?>

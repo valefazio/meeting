@@ -1,12 +1,12 @@
 <?php
 	if(!session_start()) exit("Troubles starting session.");
+	include "connection.php";
     function isLogged() {
         $logged = 0;
 		
 		if(isset($_COOKIE['remember-me']) && $_COOKIE['remember-me']) { //utente già loggato dal remember-me
 			$cookie = $_COOKIE['remember-me'];
 			$cookie = hash("sha256", $cookie);
-			include "../Management/connection.php";
 			$res = selectDb("email", "remember_token = '$cookie'");
 			if ($res->num_rows > 0) {	//cookie di remember-me corrisponde
 				$logged = 1;
@@ -20,10 +20,44 @@
 		} else {	//utente non ancora loggato
 			$logged = 0;
 		}
-        
-		if($logged == 0){
-			header("Location: ../Access/login.php");
-			exit();
-		}
+
+		return $logged;
     }
+
+	function isAdmin() {
+		$logged = isLogged();
+		//if user is not admin
+		$res = selectDb("admin", "email = '$_SESSION[logged]'");
+			
+		if($res) {
+			if ($res->num_rows > 0) {
+				$row = $res->fetch_assoc();
+				if(!$row['admin']) {
+					return false;
+				} else return true;
+			}
+		} else header("Location: login.php");
+	}
+
+	function checkAccess() {
+		if(isLogged() == 0){
+			echo "<script>window.location.href = '../Access/login.php';</script>";
+			exit;
+		}
+
+		$currentFileName = basename($_SERVER['PHP_SELF']);
+		echo "<script>console.log('".$currentFileName."')</script>";
+
+		//PAGINE AD ACCESSO RISTRETTO
+		$restrictedAccess = ['registration.php', 'users.php'];
+
+		if(in_array($currentFileName, $restrictedAccess) && !isAdmin()) {
+			echo "<h1 syle='text-align: center';>Accesso riservato agli amministratori</h1>";
+					echo "	<script> setTimeout(function() {
+						window.location.href = '../Pages/home.php';
+							}, 2000);
+						</script>";
+					exit;
+		}
+	}
 ?>

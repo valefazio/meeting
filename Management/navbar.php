@@ -3,8 +3,7 @@
 -->
 
 <?php
-		include("accessControl.php");
-        isLogged();
+	include("accessControl.php");
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +16,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
-    <link rel="stylesheet" type="text/css" href="Management/style.css">
+    <link rel="stylesheet" type="text/css" href="../Management//Style/style.css">
     <style>
         html {
             box-sizing: border-box;
@@ -29,6 +28,8 @@
             background-color: var(--navbar-color);
             padding: 0 4rem;
             border-radius: 0.625rem;
+            margin-left: -20px;
+            margin-right: -20px;
         }        
         ul {
             margin: 0;
@@ -155,23 +156,61 @@
 		document.getElementById("menu").setAttribute("onclick", "affixColumnBar()");
 		document.getElementById("menu").textContent = "account_circle";
 	}
+
+	function createNewElement(link, spanName, textToPrint) {
+		var li = document.createElement("li");
+		li.setAttribute("class", "sub-item clickable");
+		li.setAttribute("onclick", "window.location.href='" + link + "'");
+
+		var span = document.createElement("span");
+		span.setAttribute("class", "material-icons-outlined");
+		var text = document.createTextNode(spanName);
+		span.appendChild(text);
+
+		var p = document.createElement("p");
+		var text = document.createTextNode(textToPrint);
+		p.appendChild(text);
+
+		li.append(span);
+		li.append(p);
+		document.getElementById("column").append(li);
+	}
 </script>
+
+
+
+
+
 
 <body>
     <nav>
+        <div style="position:absolute; margin-left:-40px; margin-top:5px;"><a href="../Pages/home.php"><img src="../Images/logoOrizzontale.png" alt="logo" width="130"/></a></div>
     	<ul id="bar">
         	<li>
 				<span class="material-icons-outlined clickable" onclick="affixColumnBar()" id="menu" title="affix column bar">
 					menu
 				</span>
           		<ul id="column">
-					<li class="sub-item clickable"  onclick="removeColumnBar(); window.location.href='Access/logout.php'" id="login">
-						<span class="material-icons-outlined"> logout </span>
-						<p>Logout</p>
-					</li>
 				</ul>
 			</li>
       </ul>
     </nav>
+
+    <?php
+        checkAccess();
+		//per tutti gli utenti
+		echo "<script>createNewElement('../Pages/profile.php', 'account_circle', 'My Profile')</script>";
+		//per gli utenti amministratori
+        if(isAdmin()) {
+			echo "<script>
+                createNewElement('../Pages/dash.php', 'grid_view', 'Dashboard');
+                createNewElement('../Access/registration.php', 'add_box', 'Add user');
+                createNewElement('../Pages/users.php', 'group', 'List of users')
+				</script>";
+		}
+		//per tutti
+		echo "<script>createNewElement('../Access/logout.php', 'logout', 'Logout');</script>"
+    ?>
+
   </body>
 </html>

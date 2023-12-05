@@ -1,0 +1,57 @@
+@import "style.css";
+
+/* ---------------- REGISTRATION AND LOGIN ---------------- */
+#form {
+    width: fit-content;
+    background: var(--form-background);
+    border-radius: 10px;
+    padding: 0 30px 30px 30px;
+	margin: 5% auto auto auto;
+}
+td {
+    border: 2px solid var(--form-background);
+}
+
+#remember-me-text {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+    margin-top: -1px;
+}
+
+label {
+    display: block;
+    color: #555;
+    text-align: right;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'] {
+    padding: 10px;
+    margin: 5px 0 0 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+input[type='submit'] {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 50%;
+    margin: auto;
+    display: flex;
+}
+
+input[type='submit']:hover {
+    background-color: #258cd1;
+}
+
+input[type='submit']:disabled {
+    background-color: grey;
+}
