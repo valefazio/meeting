@@ -46,7 +46,6 @@
 		}
 
 		$currentFileName = basename($_SERVER['PHP_SELF']);
-		echo "<script>console.log('".$currentFileName."')</script>";
 
 		//PAGINE AD ACCESSO RISTRETTO
 		$restrictedAccess = ['registration.php', 'users.php'];

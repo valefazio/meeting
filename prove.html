@@ -1,0 +1,13 @@
+<html>
+    <script>
+        fetch('https://cors-anywhere.herokuapp.com/https://worldathletics.org/athletes/italy/larissa-iapichino-14827877')
+    .then(response => {
+        if(response.ok) {
+            console.log('URL is valid');
+        } else {
+            console.log('URL is not valid');
+        }
+    })
+    .catch(error => console.log('There was an error: ' + error));
+    </script>
+</html>

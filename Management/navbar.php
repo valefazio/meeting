@@ -16,7 +16,7 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
       rel="stylesheet"
     />
-    <link rel="stylesheet" type="text/css" href="../Management//Style/style.css">
+    <link rel="stylesheet" type="text/css" href="../Management/Style/style.css">
     <style>
         html {
             box-sizing: border-box;
@@ -124,8 +124,9 @@
         }
     </style>
     <title>Document</title>
-  </head>
+</head>
     
+
 	<script>
     function affixColumnBar() {
         var column = document.getElementById("column");
