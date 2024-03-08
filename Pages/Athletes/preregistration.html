@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Pre-registration Meeting Arcobaleno</title>
+    <link rel='stylesheet' type='text/css' href='../../Management/Style/athelesReg.css'>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="checks.js" defer></script>
+</head>
+
+<body>
+    <div id='form'>
+        <form action='preregistration.php' method='POST'>
+            <h1>Pre-Registration</h1>
+            <h2 style='color: #156988;'>Meeting Arcobaleno EAP AtleticaEuropa</h3>
+                <h3 style='font-style: italic'>Fill in the form below to pre-register.</h3>
+                <h4 style='font-style: italic'>July 17th, 2024</h4>
+                <p style='text-align: center; margin: 0 0 10px 0; font-style: italic'>* Required fields</p>
+                <table style="width: 100%;">
+                    <tbody style="width: 100%; display: block;">
+
+                        <!--------- ATLETI -------->
+                        <tr style="padding: 0; margin-bottom: 20px;">
+                            <td colspan="2" class="riga">
+                                <table id="athlete" style="width: fit-content; display: contents">
+                                    <tr style="display: inline-table;">
+                                        <td colspan='2' class='divisore'>
+                                            <h2>Athlete's information</h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 2%;">
+                                            <label for='first-name'>First name*:</label></td>
+                                        <td><input type='text' id='first-name' name='first-name' required></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 3%;">
+                                            <label for='last-name'>Last name/Surname*:</label></td>
+                                        <td><input type='text' id='last-name' name='last-name' required></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 0.5%;"><label
+                                                for='category'>Category*:</label></td>
+                                        <td>
+                                            <input type='radio' id='male' name='category' value='male' required>
+                                            <label for="male">Male</label>
+                                            <input type='radio' id='female' name='category' value='female' required style="margin-left: 10px">
+                                            <label for="female">Female</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 0.8%;"><label for='birthdate'>Birthdate*:</label></td>
+                                        <td><input type='date' id='birthdate' name='birthdate' placeholder='dd/mm/yyyy' max="2009-12-31" min="1924-01-01" required=''></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 3%;"><label for='mobile-phone'>Mobile phone*:</label></td>
+                                        <td><input type='text' id='mobile-phone' name='mobile-phone' placeholder='Example: +39 338 111 22 33' required=''></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 3%;"><label for='athlete-email'>Email*:</label></td>
+                                        <td><input type='email' id='athlete-email' name='athlete-email' required></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 3%;"><label for='citizenship'>Citizenship*:</label></td>
+                                        <td><select id='citizenship' name='cittadinanza' required>
+                                                <script>
+                                                    $(function () {
+                                                        $("#citizenship").load("../../Management/options/countries.html");
+                                                    });
+                                                </script>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 1%;"><label for='eap-member'>Are you an EAP member?*</label></td>
+                                        <td>
+                                            <input type='radio' id='eap-member-yes' name='eap-member' value='yes' required>Yes
+                                            <input type='radio' id='eap-member-no' name='eap-member' value='no'>No
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!--------- MANAGER -------->
+                        <tr style="padding: 0; margin-bottom: 20px;">
+                            <td colspan="2" class="riga">
+                                <table style="width: fit-content; display: contents">
+                                    <tr style="display: inline-table;">
+                                        <td colspan='2' class='divisore'>
+                                            <h2>Manager or Team Leader's information</h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 2%;"><label for='manager'>Manager:</label></td>
+                                        <td><input type='text' id='manager' name='manager'></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 2%;"><label for='manager-phone'>Phone:</label></td>
+                                        <td><input type='text' id='manager-phone' name='manager-phone' placeholder='Example: +39 338 111 22 33'></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 2%;"><label for='manager-email'>Email:</label></td>
+                                        <td><input type='email' id='manager-email' name='manager-email'></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!--------- GARE -------->
+                        <tr style="padding: 0; margin-bottom: 20px;">
+                            <td colspan="2" class="riga">
+                                <table style="width: fit-content; display: contents">
+                                    <tr style="display: inline-table;">
+                                        <td colspan='2' class='divisore'>
+                                            <h2>Competition events</h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 2%;"><label for='competition1'>Competition 1*:</label></td>
+                                        <td><select id='competition1' name='competition1' required>
+                                                <script>
+                                                    $(function () {
+                                                        $("#competition1").load("../../Management/options/events.html");
+                                                    });
+                                                </script>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 2%;"><label for='competition2'>Competition 2:</label></td>
+                                        <td><select id='competition2' name='competition2'>
+                                                <script>
+                                                    $(function () {
+                                                        $("#competition2").load("../../Management/options/events.html");
+                                                    });
+                                                </script>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="left" style="padding-top: 2%;">
+                                            <label for='profile-link'>World Athletics Profile link*:</label>
+                                        </td>
+                                        <td><input type='text' id='profile-link' name='profile-link' required></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <!--------- RESTO -------->
+                        <tr style="padding: 0;">
+                            <td colspan="2" class="riga">
+                                <table id="checks" style="width: fit-content; display: contents">
+                                    <tr style="display: inline-table;">
+                                        <td colspan='2' class='divisore'>
+                                            <h2>Clean & Fair section</h2>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 5%; text-align:right; padding-right: 10px;">
+                                            <input type='checkbox' id='code-of-conduct' name='code-of-conduct' required />
+                                        </td>
+                                        <td><label class="check-text" for='code-of-conduct'>
+                                            I accept the EAP Code of Conduct*</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 5%; text-align:right; padding-right: 10px;">
+                                            <input type='checkbox' id='safeguarding-policies' name='safeguarding-policies' required /></td>
+                                        <td><label class="check-text" for='safeguarding-policies'>
+                                            I have read and understood the EAP Safeguarding Policies*</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 5%; text-align:right; padding-right: 10px;">
+                                            <input type='checkbox' id='run-clean-certification' name='run-clean-certification' unset /></td>
+                                        <td><label class="check-text" for='run-clean-certification'>
+                                            I Run Clean® certification</label></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td><label for='additional-notes' style="text-align: right; display: block; margin-right: 10px;">
+                                Additional notes:</label></td>
+                            <td><textarea style='width: 60%; margin-right: 10%' id='additional-notes' name='additional-notes' rows='4' cols='50'></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><br></td>
+                        </tr>
+                        <tr>
+                            <td colspan='2' style="width: 100%; display: block;">
+                                <input cols type='submit' value='Registrati' id='register-button' disabled>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,8 +1,10 @@
 - thank you alla fine della preregistrazione
 - footer
 - vari link in fase informativa form 
-- controllare lato clien se email e controllo-email sono uguali
+- controllare lato client se email e controllo-email sono uguali
 - controllare link atleta sia valido
+- controllare che non abbia meso SELECT ONE --> @done
 
 - controllare che activeSeasons dell'atleta è vicino
 - notifica se non hai ancora gestito iscrizione
+- 
