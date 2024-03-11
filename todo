@@ -3,7 +3,11 @@
 - vari link in fase informativa form 
 - controllare lato client se email e controllo-email sono uguali
 - controllare link atleta sia valido
+- creare db per atleti
+- inserimento preregistration nel db
+- aggiustare tutte relocation a login e registration @done
 - controllare che non abbia meso SELECT ONE --> @done
+- al momento non c'è controllo di logged in registration.html @done
 
 - controllare che activeSeasons dell'atleta è vicino
 - notifica se non hai ancora gestito iscrizione

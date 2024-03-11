@@ -36,24 +36,24 @@
 					return false;
 				} else return true;
 			}
-		} else header("Location: login.php");
+		} else header("Location: ../Pages/Access/login.html");
 	}
 
 	function checkAccess() {
 		if(isLogged() == 0){
-			echo "<script>window.location.href = '../Access/login.php';</script>";
+			echo "<script>window.location.href = '../Pages/Access/login.html';</script>";
 			exit;
 		}
 
 		$currentFileName = basename($_SERVER['PHP_SELF']);
 
 		//PAGINE AD ACCESSO RISTRETTO
-		$restrictedAccess = ['registration.php', 'users.php'];
+		$restrictedAccess = ['registration.html', 'users.php'];
 
 		if(in_array($currentFileName, $restrictedAccess) && !isAdmin()) {
 			echo "<h1 syle='text-align: center';>Accesso riservato agli amministratori</h1>";
 					echo "	<script> setTimeout(function() {
-						window.location.href = '../Pages/home.php';
+						window.location.href = '../index.php';
 							}, 2000);
 						</script>";
 					exit;

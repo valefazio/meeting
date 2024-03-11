@@ -18,3 +18,27 @@ body {
 h1 {
     color: var(--text-color);
 }
+
+/*-------------------TABELLA RECAP-------------------*/
+#recap_situa {
+    background: var(--form-background);
+    padding: 20px;
+    border-radius: 10px;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 100%;
+}
+tr {
+    min-width: fit-content;
+}
+#prima_riga td {
+    text-align: center;
+    border-color: var(--text-color);
+}
+.titolo {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 20px;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="../../Management/Style/accessStyle.css">
+</head>
+<body id="form-sfondo">
+    <div id="form">
+        <form action="login.php" method="POST">
+			<table>
+				<tr>
+					<td colspan="2" style="height: fit-content"><h1>Login</h1></td>
+				</tr>
+				<tr>
+					<td><label for="email">Email:</label></td>
+					<td><input type="email" id="email" name="email" required></td>
+				</tr>
+				<tr>
+					<td><label for="pass">Password:</label></td>
+					<td><input type="password" id="pass" name="pass" required></td>
+				</tr>
+				<tr>
+					<td style="padding-top: 30px;" colspan="2"><input type="submit" value="Entra" id="login-button" disabled></td>
+				</tr>
+			</table>
+        </form>
+    </div>
+
+    <script>
+        // Ottieni i riferimenti agli elementi del modulo
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("pass");
+        const loginButton = document.getElementById("login-button");
+
+        // Aggiungi un gestore di eventi per verificare se tutti i campi sono stati riempiti
+        passwordInput.addEventListener("input", toggleLoginButton);
+        emailInput.addEventListener("input", toggleLoginButton);
+
+        function toggleLoginButton() {
+            if (emailInput.value !== "" && passwordInput.value !== "") {
+                loginButton.removeAttribute("disabled");
+            } else {
+                loginButton.setAttribute("disabled", "disabled");
+            }
+        }
+    </script>
+</body>
+</html>

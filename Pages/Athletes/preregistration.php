@@ -6,19 +6,13 @@ $email_pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["safeguarding-policies"])) {
 	if (!preg_match($email_pattern, $_POST['athlete-email'])) {
 		echo "<script>alert('Athlete's email not valid')</script>";
-		echo "	<script> setTimeout(function() {
-							window.location.href = 'preregistration.html';
-						}, 2000);
-					</script>";
+		echo "	<script>window.location.href = 'preregistration.html';</script>";
 		exit;
 	}
 
 	if ($_POST['manager_email'] && !preg_match($email_pattern, $_POST['manager_email'])) {
 		echo "<script>alert('Manager's email not valid')</script>";
-		echo "	<script> setTimeout(function() {
-							window.location.href = 'preregistration.html';
-						}, 2000);
-					</script>";
+		echo "	<script> window.location.href = 'preregistration.html';</script>";
 		exit;
 	}
 
