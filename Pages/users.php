@@ -25,7 +25,7 @@
 <body>
     <?php
 		include("../Management/navbar.php");
-		$users = getUsers($_SESSION['logged']);
+		$users = getUsers("users",$_SESSION['logged']);
         if ($users) {
             ?>
                 <h1>List of allowed users</h1>

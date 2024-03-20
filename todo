@@ -1,13 +1,20 @@
 - thank you alla fine della preregistrazione
 - footer
 - vari link in fase informativa form 
-- controllare lato client se email e controllo-email sono uguali
+- controllare lato client se email e controllo-email sono uguali @done
 - controllare link atleta sia valido
-- creare db per atleti
-- inserimento preregistration nel db
+- creare db per atleti @done
+- check the IRC number was inserted @done
+- inserimento preregistration nel db @done
 - aggiustare tutte relocation a login e registration @done
 - controllare che non abbia meso SELECT ONE --> @done
 - al momento non c'è controllo di logged in registration.html @done
+- modificare connection.php con prepared statement @done
+- se si scrive uno dei campi del manager, allora serve anche il nome @done
+- controllare valori di ritorno dalle operazioni nel db
+- errore: se c'è nome manager e poi scrivi numero mette riquadro nome in rosso
+- si sminchia css selezione eap 
+- check manager email format
 
 - controllare che activeSeasons dell'atleta è vicino
 - notifica se non hai ancora gestito iscrizione

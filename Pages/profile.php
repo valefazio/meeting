@@ -2,12 +2,12 @@
 <html>
 <head>
     <title>Profile Page</title>
-    <link rel="stylesheet" type="text/css" href="../Management//Style/style.css">
+    <link rel="stylesheet" type="text/css" href="../Management/Style/style.css">
 </head>
 <body>
     <?php
 		include("../Management/navbar.php");
-        $profileData = getUserProfileData($_SESSION['logged']);
+        $profileData = getUserProfileData("users", $_SESSION['logged']);
         // Note: Removed redundant assignment to $profileData
         if ($profileData) {
             foreach ($profileData as $profile) {

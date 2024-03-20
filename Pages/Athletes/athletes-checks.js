@@ -3,14 +3,17 @@
 /*resets();*/
 
 // Get references to form elements
-const firstNameInput = document.getElementById('first-name');
-const lastNameInput = document.getElementById('last-name');
+const firstNameInput = document.getElementById('name');
+const lastNameInput = document.getElementById('surname');
 const categoryInputs = document.getElementsByName('category');
 const birthdateInput = document.getElementById('birthdate');
-const mobilePhoneInput = document.getElementById('mobile-phone');
+const phoneInput = document.getElementById('phone');
 const athleteEmailInput = document.getElementById('athlete-email');
 const citizenshipInput = document.getElementById('citizenship');
 const eapMemberInputs = document.getElementsByName('eap-member');
+const managerNameInput = document.getElementById('manager');
+const managerPhoneInput = document.getElementById('manager-phone');
+const managerEmailInput = document.getElementById('manager-email');
 const competition1Input = document.getElementById('competition1');
 const competition2Input = document.getElementById('competition2');
 const worldAthleticsProfileLinkInput = document.getElementById('profile-link');
@@ -61,22 +64,22 @@ function toggleCompetition2() {
 runCleanCertificationInput.addEventListener('click', IRCcertificate);
 
 // Check if phone number is valid
-mobilePhoneInput.addEventListener('input', checkPhoneNumber);
+phoneInput.addEventListener('input', checkPhoneNumber);
 //Check if email is valid
 athleteEmailInput.addEventListener('input', checkEmailFormat);
 // Check if link is valid
 worldAthleticsProfileLinkInput.addEventListener('input', checkLinkValidity);
+// If a manager's field is filled, the name must be filled too
+managerPhoneInput.addEventListener('input', checkManagerEmail);
+managerNameInput.addEventListener('input', checkManagerEmail);
 
 // Add an event handler to check if all fields are filled
-for (const input of [firstNameInput, lastNameInput, birthdateInput, mobilePhoneInput, athleteEmailInput, citizenshipInput, competition1Input, worldAthleticsProfileLinkInput, codeOfConductInput, safeguardingPoliciesInput, runCleanCertificationInput]) {
+for (const input of [firstNameInput, lastNameInput, birthdateInput, phoneInput, athleteEmailInput, citizenshipInput, competition1Input, worldAthleticsProfileLinkInput, codeOfConductInput, safeguardingPoliciesInput, runCleanCertificationInput]) 
     input.addEventListener('input', toggleRegisterButton);
-}
-for (const input of categoryInputs) {
+for (const input of categoryInputs)
     input.addEventListener('click', toggleRegisterButton);
-}
-for (const input of eapMemberInputs) {
+for (const input of eapMemberInputs)
     input.addEventListener('click', toggleRegisterButton);
-}
 // Allow submit only if all required fields are filled
 function toggleRegisterButton() {
     if (
@@ -84,7 +87,7 @@ function toggleRegisterButton() {
         lastNameInput.value.trim() !== '' &&
         isCategorySelected() &&
         birthdateInput.value.trim() !== '' &&
-        mobilePhoneInput.value.trim() !== '' &&
+        phoneInput.value.trim() !== '' &&
         athleteEmailInput.value.trim() !== '' &&
         citizenshipInput.value.trim() !== '' &&
         isEapMemberSelected() &&
@@ -93,7 +96,12 @@ function toggleRegisterButton() {
         codeOfConductInput.checked &&
         safeguardingPoliciesInput.checked
     ) {
-        registerButton.removeAttribute('disabled');
+        if(managerNameInput != "") {    //se c'è il nome, ci deve essere anche la mail
+            if(managerEmailInput != "")
+                registerButton.removeAttribute('disabled');
+            else
+                registerButton.setAttribute('disabled', 'disabled');
+        }
     } else {
         registerButton.setAttribute('disabled', 'disabled');
     }
@@ -139,12 +147,13 @@ function resets() {
 
 // Check if phone number is valid
 function checkPhoneNumber() {
-    if (mobilePhoneInput.value.length < 12 || mobilePhoneInput.value.length > 15 || isNaN(mobilePhoneInput.value)) {
-        mobilePhoneInput.setCustomValidity('Phone number must be at least 10 digits');
-        mobilePhoneInput.setAttribute('style', 'border-color: red; background-color: #fdd');
+	phonePattern = /^\+\d{10,15}$/;
+    if (!phoneInput.value.match(phonePattern) || isNaN(phoneInput.value)) {
+        phoneInput.setCustomValidity('Phone number must be at least 10 digits');
+        phoneInput.setAttribute('style', 'border-color: red; background-color: #fdd');
     } else {
-        mobilePhoneInput.setCustomValidity('');
-        mobilePhoneInput.setAttribute('style', 'border-color: #ccc');
+        phoneInput.setCustomValidity('');
+        phoneInput.setAttribute('style', 'border-color: #ccc');
     }
 }
 //Check if email is valid
@@ -197,6 +206,7 @@ function toggleEapMemberSelect() {
     if (eapMemberYes.checked && document.getElementById("athlete").childElementCount == 1) {
         select = document.createElement("select");
         select.required = true;
+        select.setAttribute("name", "eap-member-team");
         select.append(createSelectOption("", "SELECT ONE -->"));
         select.append(createSelectOption("Amsterdam", "Amsterdam(NED)"));
         select.append(createSelectOption("Annecy", "Annecy(FRA)"));
@@ -214,7 +224,7 @@ function toggleEapMemberSelect() {
         select.append(createSelectOption("Villa Manin", "Villa Manin(ITA)"));
         //put in the table
         tr = document.createElement("tr");
-        tr.setAttribute("id", "eap-member-number");
+        tr.setAttribute("id", "eap-member-box");
         td = document.createElement("td");
         td.setAttribute("style", "display: ruby-base; margin-left: 50%;");
         tr.append(td);
@@ -224,7 +234,7 @@ function toggleEapMemberSelect() {
         document.getElementById("athlete").appendChild(tr);
     }
     if (eapMemberNo.checked) {	//remove select
-        var eapMemberNumberRow = document.getElementById('eap-member-number');
+        var eapMemberNumberRow = document.getElementById('eap-member-box');
         if (eapMemberNumberRow) {
             document.getElementById("athlete").removeChild(eapMemberNumberRow);
         }
@@ -238,6 +248,18 @@ function createSelectOption(value, text) {
     return option;
 }
 
+// If a manager's field is filled, the name must be filled too
+function checkManagerEmail() {
+	if ((managerPhoneInput.value.trim() !== '' && managerEmailInput.value.trim() === '')) {
+		managerNameInput.setCustomValidity('Manager email must be filled too');
+		managerNameInput.setAttribute('style', 'border-color: red; background-color: #fdd');
+		managerNameInput.required = true;
+	} else {
+		managerNameInput.setCustomValidity('');
+		managerNameInput.setAttribute('style', 'border-color: #ccc');
+		managerNameInput.required = false;
+	}
+}
 
 
 // Add textarea for certification info if runCleanCertificationInput is checked
@@ -256,14 +278,14 @@ function IRCcertificate() {
         label.textContent = "If YES, add more info:";
         label.setAttribute("font-style", "italic");
         label.setAttribute("style", "text-align:left; margin-left: -15px; margin-top: -5%");
-        label.required = true;
         textarea = document.createElement("textarea");
         textarea.setAttribute("style", "margin-left: 10px;");
         textarea.setAttribute("rows", "2");
         textarea.setAttribute("cols", "30");
         textarea.setAttribute("id", "certification-info");
         textarea.setAttribute("name", "certification-info");
-        textarea.setAttribute("placeholder", "date of completion and certification number")
+        textarea.setAttribute("placeholder", "date of completion and certification number");
+        textarea.required = true;
         td.append(label);
         td.append(textarea);
         tr.append(td);

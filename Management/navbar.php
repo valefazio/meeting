@@ -28,8 +28,8 @@ include("accessControl.php");
             background-color: var(--navbar-color);
             padding: 0 4rem;
             border-radius: 0.625rem;
-            margin-left: -20px;
-            margin-right: -20px;
+            /* margin-left: -20px;
+            margin-right: -20px; */
         }
 
         ul {
@@ -198,10 +198,10 @@ include("accessControl.php");
         <div style="position:absolute; margin-left:-40px; margin-top:5px;"><a href="../Pages/home.php"><img
                     src="../Images/logoOrizzontale.png" alt="logo" width="130" /></a></div>
         <ul id="bar"><li>
-                <span class="material-icons-outlined clickable" onclick="affixColumnBar()" id="menu" title="affix column bar">
-                    menu
-                </span>
-                <ul id="column"></ul>
+            <span class="material-icons-outlined clickable" onclick="affixColumnBar()" id="menu" title="affix column bar">
+                menu
+            </span>
+            <ul id="column"></ul>
         </li></ul>
     </nav>
 

@@ -6,7 +6,7 @@
     <title>Pre-registration Meeting Arcobaleno</title>
     <link rel='stylesheet' type='text/css' href='../../Management/Style/athelesReg.css'>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="checks.js" defer></script>
+    <script src="athletes-checks.js" defer></script>
 </head>
 
 <body>
@@ -31,21 +31,21 @@
                                     </tr>
                                     <tr>
                                         <td class="left" style="padding-top: 2%;">
-                                            <label for='first-name'>First name*:</label></td>
-                                        <td><input type='text' id='first-name' name='first-name' required></td>
+                                            <label for='name'>First name*:</label></td>
+                                        <td><input type='text' id='name' name='name' required></td>
                                     </tr>
                                     <tr>
                                         <td class="left" style="padding-top: 3%;">
-                                            <label for='last-name'>Last name/Surname*:</label></td>
-                                        <td><input type='text' id='last-name' name='last-name' required></td>
+                                            <label for='surname'>Last name/Surname*:</label></td>
+                                        <td><input type='text' id='surname' name='surname' required></td>
                                     </tr>
                                     <tr>
                                         <td class="left" style="padding-top: 0.5%;"><label
                                                 for='category'>Category*:</label></td>
                                         <td>
-                                            <input type='radio' id='male' name='category' value='male' required>
+                                            <input type='radio' id='male' name='category' value='M' required>
                                             <label for="male">Male</label>
-                                            <input type='radio' id='female' name='category' value='female' required style="margin-left: 10px">
+                                            <input type='radio' id='female' name='category' value='F' required style="margin-left: 10px">
                                             <label for="female">Female</label>
                                         </td>
                                     </tr>
@@ -54,8 +54,8 @@
                                         <td><input type='date' id='birthdate' name='birthdate' placeholder='dd/mm/yyyy' max="2009-12-31" min="1924-01-01" required=''></td>
                                     </tr>
                                     <tr>
-                                        <td class="left" style="padding-top: 3%;"><label for='mobile-phone'>Mobile phone*:</label></td>
-                                        <td><input type='text' id='mobile-phone' name='mobile-phone' placeholder='Example: +39 338 111 22 33' required=''></td>
+                                        <td class="left" style="padding-top: 3%;"><label for='phone'>Mobile phone*:</label></td>
+                                        <td><input type='text' id='phone' name='phone' placeholder='Example: +39 338 111 22 33' required=''></td>
                                     </tr>
                                     <tr>
                                         <td class="left" style="padding-top: 3%;"><label for='athlete-email'>Email*:</label></td>

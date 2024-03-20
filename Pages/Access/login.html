@@ -20,6 +20,8 @@
 					<td><label for="pass">Password:</label></td>
 					<td><input type="password" id="pass" name="pass" required></td>
 				</tr>
+                <tr><!-- ERROR: fa si che posso schiacciare anche sulla scritta -->
+                    <td colspan="2"><input type="checkbox" onclick="showPass()">Mostra password</td>
 				<tr>
 					<td style="padding-top: 30px;" colspan="2"><input type="submit" value="Entra" id="login-button" disabled></td>
 				</tr>
@@ -42,6 +44,15 @@
                 loginButton.removeAttribute("disabled");
             } else {
                 loginButton.setAttribute("disabled", "disabled");
+            }
+        }
+
+        function showPass() {
+            var x = document.getElementById("pass");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
             }
         }
     </script>

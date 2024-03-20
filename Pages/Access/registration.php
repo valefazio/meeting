@@ -23,14 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	$email = htmlspecialchars(trim($_POST['email']));
 
-	$res = selectDb("email", "email = '$email'");
+	$res = selectDb("users", ["email"], "email = '$email'");
 	if ($res->num_rows != 0) {
 		echo "<script>alert('Utente già registrato')</script>";
 		header("Location: registration.html");
 		exit;
 	}
 	$username = htmlspecialchars(trim($_POST["username"]));
-	insertDb("username, email, password", "'$username', '$email', '$psw'");
+	insertDb("users", ["username", "email", "pass_hash"], [$username, $email, $psw]);
 
 	header("Location: ../users.php");
 }

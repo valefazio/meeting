@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
 	$email = htmlspecialchars($_POST['email']);
 	$password = $_POST['pass'];
 
-	$res = selectDb("email, password", "email = '$email'");
+	$res = selectDb("users", ["email", "pass_hash"], "email = '$email'");
 	if ($res->num_rows == 0) {
 		echo "<script>alert('Email or password are not correct')</script>";
 		if (session_status() == PHP_SESSION_ACTIVE)
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
 		exit;
 	}
 	$row = $res->fetch_assoc();
-	if (!password_verify($password, $row['password'])) {
+	if (!password_verify($password, $row['pass_hash'])) {
 		echo "<script>alert('Email or password are not correct')</script>";
 		if (session_status() == PHP_SESSION_ACTIVE)
 			session_abort();
@@ -31,8 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['email']) && isset($_P
 		$bytes = random_bytes(12);
 		setcookie("remember-me", $bytes, time() + (86400 * 30), "/");
 		$cookie = hash("sha256", $bytes);
-		updateDb("remember_token", "'$cookie'", "email = '$email'");
-		updateDb("remember_token_created_at", "CURRENT_TIMESTAMP", "email = '$email'");
+		updateDb("users", ["remember_token"], [$cookie], "email = '$email'");
+		updateDb("users", ["remember_token_created_at"], ["CURRENT_TIMESTAMP"], "email = '$email'");
 	}
 
 	header("Location: ../home.php");

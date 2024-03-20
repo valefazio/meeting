@@ -11,8 +11,9 @@
 body {
     font-family: 'Poppins', sans-serif;
     background: var(--main-color);
-    margin: 0 20px 20px 20px;
-	font-size: 15px;
+    /* margin: 0 20px auto 20px; */
+    margin: 0;
+	font-size: 10px;
 }
 
 h1 {
@@ -22,11 +23,10 @@ h1 {
 /*-------------------TABELLA RECAP-------------------*/
 #recap_situa {
     background: var(--form-background);
-    padding: 20px;
-    border-radius: 10px;
+    /*border-radius: 10px;*/
     border-collapse: collapse;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+    margin: 20px 10px auto 10px;
     width: 100%;
 }
 tr {
@@ -35,10 +35,14 @@ tr {
 #prima_riga td {
     text-align: center;
     border-color: var(--text-color);
+    padding: 0;
+}
+td {
+    padding: 10px;
 }
 .titolo {
     text-decoration: none;
     color: var(--text-color);
-    font-size: 20px;
+    font-size: 12px;
     margin-bottom: 20px;
 }
